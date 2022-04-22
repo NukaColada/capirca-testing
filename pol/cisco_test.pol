@@ -1,1 +1,24 @@
-target:: cisco [allow https] 
+# target:: cisco [allow-https] extended
+#   action:: accept
+#   destination-port:: 443
+#   destination-address:: any
+#   source-address:: RFC1918
+#   source-port:: any
+
+header {
+  comment:: "Testing out cisco acl generation"
+  target:: cisco
+}
+term discard-spoofs {
+  source-address:: RFC1918
+  action:: deny
+}
+term permit-ipsec-access {
+  source-address:: 192.168.0.0/23
+  destination-address:: 10.10.10.0/24
+  protocol:: 50
+  action:: accept
+}
+term default-deny {
+  action:: deny
+}
