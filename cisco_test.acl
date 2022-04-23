@@ -1,0 +1,15 @@
+! $Id:$
+! $Date:$
+! $Revision:$
+no ip access-list extended test-filter
+ip access-list extended test-filter
+ remark $Id:$
+ remark Testing out cisco acl generation
+
+
+ remark discard-spoofs
+ deny ip 10.0.0.0 0.255.255.255 127.0.0.0 0.255.255.255
+ deny ip 172.16.0.0 0.15.255.255 127.0.0.0 0.255.255.255
+ deny ip 192.168.0.0 0.0.255.255 127.0.0.0 0.255.255.255
+
+exit

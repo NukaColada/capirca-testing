@@ -7,18 +7,19 @@
 
 header {
   comment:: "Testing out cisco acl generation"
-  target:: cisco
+  target:: cisco test-filter extended
 }
 term discard-spoofs {
   source-address:: RFC1918
+  destination-address:: LOOPBACK
   action:: deny
 }
-term permit-ipsec-access {
-  source-address:: 192.168.0.0/23
-  destination-address:: 10.10.10.0/24
-  protocol:: 50
-  action:: accept
-}
-term default-deny {
-  action:: deny
-}
+# term permit-ipsec-access {
+#   source-address:: 192.168.0.0/23
+#   destination-address:: 10.10.10.0/24
+#   protocol:: 50
+#   action:: accept
+# }
+# term default-deny {
+#   action:: deny
+# }
